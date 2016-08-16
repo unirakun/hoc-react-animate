@@ -32,11 +32,21 @@ var getDisplayName = function getDisplayName(c) {
   return c.displayName || c.name || 'Component';
 };
 
-exports.default = function (ComposedComponent, watchedProps, timeout) {
+exports.default = function (ComposedComponent, config) {
   var _class, _temp2;
 
-  var className = arguments.length <= 3 || arguments[3] === undefined ? 'animate' : arguments[3];
-  var animateAtMount = arguments.length <= 4 || arguments[4] === undefined ? false : arguments[4];
+  var _ref = config || {};
+
+  var _ref$watchedProps = _ref.watchedProps;
+  var watchedProps = _ref$watchedProps === undefined ? [] : _ref$watchedProps;
+  var _ref$timeout = _ref.timeout;
+  var timeout = _ref$timeout === undefined ? 1000 : _ref$timeout;
+  var _ref$className = _ref.className;
+  var className = _ref$className === undefined ? 'animate' : _ref$className;
+  var _ref$atMount = _ref.atMount;
+  var atMount = _ref$atMount === undefined ? false : _ref$atMount;
+
+
   return _temp2 = _class = function (_Component) {
     _inherits(_class, _Component);
 
@@ -53,36 +63,51 @@ exports.default = function (ComposedComponent, watchedProps, timeout) {
 
       return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(_class)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
         props: {}
-      }, _this.getClassName = function () {
-        return '' + (_this.props.className ? _this.props.className + ' ' : '') + className;
       }, _this.animate = function (animate, props) {
         if (animate) {
+          var composedClassName = className;
+          if (_this.props.className) composedClassName = composedClassName + ' ' + _this.props.className;
+
           _this.setState({
-            props: (0, _pick2.default)(props || _this.props, watchedProps),
-            className: animate ? _this.getClassName() : _this.props.className
+            props: props,
+            className: composedClassName
           });
 
-          setTimeout(function () {
-            _this.setState({
-              className: _this.props.className
-            });
+          _this.timer = setTimeout(function () {
+            return _this.animate(false, (0, _pick2.default)(_this.props, watchedProps));
           }, timeout);
+        } else {
+          _this.setState({
+            props: props,
+            className: _this.props.className
+          });
         }
-      }, _this.componentWillReceiveProps = function (nextProps) {
-        var pickedProps = (0, _pick2.default)(nextProps, watchedProps);
-        _this.animate(!(0, _isEqual2.default)(pickedProps, _this.state.props), pickedProps);
       }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(_class, [{
       key: 'componentWillMount',
       value: function componentWillMount() {
-        this.animate(animateAtMount);
+        this.animate(atMount, (0, _pick2.default)(this.props, watchedProps));
+      }
+    }, {
+      key: 'componentWillReceiveProps',
+      value: function componentWillReceiveProps(nextProps) {
+        var pickedProps = (0, _pick2.default)(nextProps, watchedProps);
+        this.animate(!(0, _isEqual2.default)(pickedProps, this.state.props), pickedProps);
+      }
+    }, {
+      key: 'componentWillUnmount',
+      value: function componentWillUnmount() {
+        clearTimeout(this.timer);
       }
     }, {
       key: 'render',
       value: function render() {
-        return _react2.default.createElement(ComposedComponent, _extends({}, this.props, { className: this.state.className }));
+        var newProps = {};
+        if (this.state.className) newProps.className = this.state.className;
+
+        return _react2.default.createElement(ComposedComponent, _extends({}, this.props, newProps));
       }
     }]);
 

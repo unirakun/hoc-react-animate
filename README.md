@@ -14,10 +14,10 @@ You have to wrap your component, and give some informations :
 
 Parameter | Needed | Default value | Description
 ----------|--------|---------------|-------------
-`watchedProps` | **YES** | N/A | The props to watch (they are compared with `lodash/isEqual`)
-`timeout` | **YES** | N/A | The time the CSS class will be passed to the wrapped component
+`watchedProps` | no | `[]` | The props to watch (they are compared with `lodash/isEqual`)
+`timeout` | no | `1000` | The time (in ms) the CSS class will be passed to the wrapped component
 `className` | no | `'animate'` | This is the className that is added whenever a props change (or at mount)
-`animateAtMount` | no | `false` | Set to `true` if you wanna animate the component at mount
+`atMount` | no | `false` | Set to `true` if you wanna animate the component at mount
 
 Example with `redux` where a text change every 3s.
 
@@ -72,7 +72,13 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(animate(Component, ['text'], 1000))
+)(animate(
+  Component,
+  {
+    watchedProps: ['text'],
+    timeout: 1000,
+  }
+))
 ```
 **css**
 ```(css)
