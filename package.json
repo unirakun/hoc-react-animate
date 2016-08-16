@@ -1,6 +1,6 @@
 {
   "name": "hoc-react-animate",
-  "version": "0.2.23",
+  "version": "0.2.24",
   "description": "Add a CSS class whenever a props change (or/and at mount)",
   "main": "index.js",
   "dependencies": {},
@@ -34,7 +34,7 @@
     "webpack": "^1.13.1"
   },
   "scripts": {
-    "lint": "eslint src/index.js",
+    "lint": "eslint src/index.jsx",
     "build": "cross-env BABEL_ENV=cjs babel --ignore \"*.spec.js\" ./src/ -d .",
     "test": "NODE_ENV=test mocha --recursive --compilers js:babel-register --require ./misc/testSetup.js \"src/**/*.spec.js\" "
   },
