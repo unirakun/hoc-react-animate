@@ -1,6 +1,6 @@
 {
   "name": "hoc-react-animate",
-  "version": "0.2.22",
+  "version": "0.2.23",
   "description": "Add a CSS class whenever a props change (or/and at mount)",
   "main": "index.js",
   "dependencies": {},

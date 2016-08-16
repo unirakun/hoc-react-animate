@@ -63,8 +63,8 @@ exports.default = function (ComposedComponent, config) {
 
       return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(_class)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
         props: {}
-      }, _this.animate = function (animate, props) {
-        if (animate) {
+      }, _this.applyClassName = function (shouldAnimate, props) {
+        if (shouldAnimate) {
           var composedClassName = className;
           if (_this.props.className) composedClassName = composedClassName + ' ' + _this.props.className;
 
@@ -74,7 +74,7 @@ exports.default = function (ComposedComponent, config) {
           });
 
           _this.timer = setTimeout(function () {
-            return _this.animate(false, (0, _pick2.default)(_this.props, watchedProps));
+            return _this.applyClassName(false, (0, _pick2.default)(_this.props, watchedProps));
           }, timeout);
         } else {
           _this.setState({
@@ -88,13 +88,13 @@ exports.default = function (ComposedComponent, config) {
     _createClass(_class, [{
       key: 'componentWillMount',
       value: function componentWillMount() {
-        this.animate(atMount, (0, _pick2.default)(this.props, watchedProps));
+        this.applyClassName(atMount, (0, _pick2.default)(this.props, watchedProps));
       }
     }, {
       key: 'componentWillReceiveProps',
       value: function componentWillReceiveProps(nextProps) {
         var pickedProps = (0, _pick2.default)(nextProps, watchedProps);
-        this.animate(!(0, _isEqual2.default)(pickedProps, this.state.props), pickedProps);
+        this.applyClassName(!(0, _isEqual2.default)(pickedProps, this.state.props), pickedProps);
       }
     }, {
       key: 'componentWillUnmount',

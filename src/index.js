@@ -25,8 +25,8 @@ export default (
       props: {},
     }
 
-    animate = (animate, props) => {
-      if (animate) {
+    applyClassName = (shouldAnimate, props) => {
+      if (shouldAnimate) {
         let composedClassName = className
         if (this.props.className) composedClassName = `${composedClassName} ${this.props.className}`
 
@@ -35,7 +35,10 @@ export default (
           className: composedClassName,
         })
 
-        this.timer = setTimeout(() => this.animate(false, pick(this.props, watchedProps)), timeout)
+        this.timer = setTimeout(
+          () => this.applyClassName(false, pick(this.props, watchedProps)),
+          timeout
+        )
       } else {
         this.setState({
           props,
@@ -45,12 +48,12 @@ export default (
     }
 
     componentWillMount() {
-      this.animate(atMount, pick(this.props, watchedProps))
+      this.applyClassName(atMount, pick(this.props, watchedProps))
     }
 
     componentWillReceiveProps(nextProps) {
       const pickedProps = pick(nextProps, watchedProps)
-      this.animate(!isEqual(pickedProps, this.state.props), pickedProps)
+      this.applyClassName(!isEqual(pickedProps, this.state.props), pickedProps)
     }
 
     componentWillUnmount() {
