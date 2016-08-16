@@ -52,7 +52,7 @@ const mapStateToProps = ({ text }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    load: (text) => dispatch(setText()),
+    load: (text) => dispatch(setText(text)),
   }
 }
 
