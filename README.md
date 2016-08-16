@@ -11,12 +11,13 @@ This HOC purpose is to add a CSS className whenever a props change or at mount (
 You have to wrap your component, and give some informations :
 
 
-| Parameter | Needed | Default value | Description
-|-
-| `watchedProps` | **YES** | N/A | The props to watch (they are compared with `lodash/isEqual`)
-| `timeout` | **YES** | N/A | The time the CSS class will be passed to the wrapped component
-| `className` | no | `'animate'` | This is the className that is added whenever a props change (or at mount)
-| `animateAtMount` | no | `false` | Set to `true` if you wanna animate the component at mount
+
+Parameter | Needed | Default value | Description
+----------|--------|---------------|-------------
+`watchedProps` | **YES** | N/A | The props to watch (they are compared with `lodash/isEqual`)
+`timeout` | **YES** | N/A | The time the CSS class will be passed to the wrapped component
+`className` | no | `'animate'` | This is the className that is added whenever a props change (or at mount)
+`animateAtMount` | no | `false` | Set to `true` if you wanna animate the component at mount
 
 Example with `redux` where a text change every 3s.
 
