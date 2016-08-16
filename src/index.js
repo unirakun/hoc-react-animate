@@ -6,50 +6,62 @@ const getDisplayName = (c) => c.displayName || c.name || 'Component'
 
 export default (
   ComposedComponent,
-  watchedProps,
-  timeout,
-  className = 'animate',
-  animateAtMount = false
-) => class extends Component {
-  static displayName = `Animate(${getDisplayName(ComposedComponent)})`
-  static propTypes = {
-    className: PropTypes.string,
-  }
+  config,
+) => {
+  const {
+    watchedProps = [],
+    timeout = 1000,
+    className = 'animate',
+    atMount = false,
+  } = config || {}
 
-  state = {
-    props: {},
-  }
+  return class extends Component {
+    static displayName = `Animate(${getDisplayName(ComposedComponent)})`
+    static propTypes = {
+      className: PropTypes.string,
+    }
 
-  getClassName = () => {
-    return `${this.props.className ? `${this.props.className} ` : ''}${className}`
-  }
+    state = {
+      props: {},
+    }
 
-  animate = (animate, props) => {
-    if (animate) {
-      this.setState({
-        props: pick(props || this.props, watchedProps),
-        className: animate ? this.getClassName() : this.props.className,
-      })
+    animate = (animate, props) => {
+      if (animate) {
+        let composedClassName = className
+        if (this.props.className) composedClassName = `${composedClassName} ${this.props.className}`
 
-      setTimeout(() => {
         this.setState({
+          props,
+          className: composedClassName,
+        })
+
+        this.timer = setTimeout(() => this.animate(false, pick(this.props, watchedProps)), timeout)
+      } else {
+        this.setState({
+          props,
           className: this.props.className,
         })
-      }, timeout)
+      }
+    }
+
+    componentWillMount() {
+      this.animate(atMount, pick(this.props, watchedProps))
+    }
+
+    componentWillReceiveProps(nextProps) {
+      const pickedProps = pick(nextProps, watchedProps)
+      this.animate(!isEqual(pickedProps, this.state.props), pickedProps)
+    }
+
+    componentWillUnmount() {
+      clearTimeout(this.timer)
+    }
+
+    render() {
+      const newProps = {}
+      if (this.state.className) newProps.className = this.state.className
+
+      return <ComposedComponent {...this.props} {...newProps} />
     }
   }
-
-  componentWillMount() {
-    this.animate(animateAtMount)
-  }
-
-  componentWillReceiveProps = (nextProps) => {
-    const pickedProps = pick(nextProps, watchedProps)
-    this.animate(!isEqual(pickedProps, this.state.props), pickedProps)
-  }
-
-  render() {
-    return <ComposedComponent {...this.props} className={this.state.className} />
-  }
 }
-
