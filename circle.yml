@@ -5,8 +5,19 @@ machine:
 dependencies:
   override:
     - docker run --rm -v $(pwd):/usr/src/app zenika/alpine-node npm install
+    - docker run --rm -v $(pwd)/samples:/usr/src/app zenika/alpine-node npm install
 
 test:
   override:
     - docker run --rm -v $(pwd):/usr/src/app zenika/alpine-node npm run test
     - docker run --rm -v $(pwd):/usr/src/app zenika/alpine-node npm run lint
+    - docker run --rm -v $(pwd)/samples:/usr/src/app zenika/alpine-node npm run test
+    - docker run --rm -v $(pwd)/samples:/usr/src/app zenika/alpine-node npm run lint
+
+deployment:
+  production:
+    branch: samples
+    commands:
+      - npm install -g firebase-tools
+      - docker run --rm -v $(pwd)/samples:/usr/src/app zenika/alpine-node npm run build
+      - cd samples && firebase deploy --token=${FIREBASE_TOKEN} --non-interactive --project ${FIREBASE_PROJECT}
