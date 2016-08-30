@@ -4,6 +4,7 @@ import Sample from 'Sample'
 import AtMount from './AtMount'
 import AtMountTimeout from './AtMountTimeout'
 import PropChange from './PropChange'
+import SpecifyClassName from './SpecifyClassName'
 
 import styles from './Samples.scss'
 
@@ -27,6 +28,10 @@ const Samples = ({ style, className }) => (
 
     <Sample className={styles.sample} code="tutu">
       <PropChange ex={2} />
+    </Sample>
+
+    <Sample className={styles.sample} code="tata">
+      <SpecifyClassName />
     </Sample>
   </div>
 )

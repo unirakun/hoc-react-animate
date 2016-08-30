@@ -13,6 +13,7 @@ const AtMount = ({ ex, className }) => (
 AtMount.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string,
+  ex: PropTypes.string.isRequired,
 }
 
 export default animate(AtMount, { watchedProps: ['ex'] })
