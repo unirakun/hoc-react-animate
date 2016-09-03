@@ -11,7 +11,6 @@ test:
   override:
     - docker run --rm -v $(pwd):/usr/src/app zenika/alpine-node npm run test
     - docker run --rm -v $(pwd):/usr/src/app zenika/alpine-node npm run lint
-    - docker run --rm -v $(pwd)/samples:/usr/src/app zenika/alpine-node npm run test
     - docker run --rm -v $(pwd)/samples:/usr/src/app zenika/alpine-node npm run lint
 
 deployment:

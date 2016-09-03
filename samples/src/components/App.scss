@@ -7,4 +7,14 @@
     margin-bottom: 30px;
     width: 50%;
   }
+
+  .github {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}
+
+:global(.github-button) {
+  display: none;
 }
