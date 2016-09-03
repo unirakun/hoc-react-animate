@@ -5,7 +5,8 @@ import styles from '../animate.scss'
 
 const AtMount = ({ ex, className }) => (
   <div className={`${styles.component} ${className}`}>
-    I'm animate when my <pre>ex</pre> prop is changed.<br />
+    {"I'm animated when my <pre>ex</pre> prop is changed."}
+    <br />
     <pre>ex = {ex}</pre>
   </div>
 )
