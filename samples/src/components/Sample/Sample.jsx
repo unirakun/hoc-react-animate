@@ -1,6 +1,8 @@
 import React, { PropTypes, Component } from 'react'
+import Ink from 'react-ink'
 
 import Code from 'Code'
+import Button from './Button'
 import styles from './Sample.scss'
 
 const words = ['Banana', 'House', 'Train', 'Dog', 'Cat', 'River']
@@ -28,9 +30,12 @@ class Sample extends Component {
 
     return (
       <div style={style} className={`${styles.sample} ${className}`}>
-        <button onClick={this.onClick}>Change prop</button>
-        <a href={`${BASE_URL}${link}`}><Code>{code}</Code></a>
-        {React.cloneElement(children, {ex: this.state.ex})}
+        {React.cloneElement(children, {ex: this.state.ex, className: styles.result})}
+        <a href={`${BASE_URL}${link}`}>
+          <Code className={styles.code}>{code}</Code>
+          <Ink />
+        </a>
+        <Button onClick={this.onClick} />
       </div>
     )
   }

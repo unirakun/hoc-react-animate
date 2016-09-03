@@ -1,0 +1,19 @@
+@import '~styles/colors';
+
+.button {
+  background-color: darken($primary, 20);
+  border: 0;
+  box-shadow: none;
+  color: lighten($secondary, 20);
+  cursor: pointer;
+  height: 50px;
+  outline: 0;
+  padding: 0 2rem;
+  position: relative;
+  text-transform: uppercase;
+
+
+  &:hover {
+    background-color: darken($primary, 22);
+  }
+}

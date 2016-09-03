@@ -9,6 +9,7 @@ const AtMount = ({ ex, className }) => (
     <br />
     {"With custom timeout."}
     <br />
+    <br />
     <pre>ex = {ex}</pre>
   </div>
 )

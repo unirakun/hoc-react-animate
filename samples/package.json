@@ -8,8 +8,7 @@
   "scripts": {
     "start": "set NODE_ENV=development && webpack-dev-server --inline --hot --port=3000 --history-api-fallback",
     "build": "NODE_ENV=production webpack --define process.env.NODE_ENV='\"production\"' -p ",
-    "lint": "eslint src && find ./src/ -iname \"*.scss\" -exec sass-lint -v -q {} +",
-    "test": "NODE_ENV=test mocha --recursive --compilers js:babel-register --require ./misc/testSetup.js \"src/**/*.spec.js\" "
+    "lint": "eslint src && find ./src/ -iname \"*.scss\" -exec sass-lint -v -q {} +"
   },
   "author": "Fabien JUIF",
   "license": "MIT",
@@ -52,6 +51,7 @@
     "normalize.css": "~4.2.0",
     "react": "15.3.0",
     "react-dom": "15.3.0",
-    "react-highlight": "^0.8.0"
+    "react-highlight": "^0.8.0",
+    "react-ink": "^5.1.1"
   }
 }
