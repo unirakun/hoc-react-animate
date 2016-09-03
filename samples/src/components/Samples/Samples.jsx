@@ -26,11 +26,20 @@ const Samples = ({ style, className }) => (
       <AtMountTimeout />
     </Sample>
 
-    <Sample className={styles.sample} code="tutu">
+    <Sample
+      className={styles.sample}
+      code="export default animate(AtMount, { watchedProps: ['ex'] })"
+    >
       <PropChange ex={2} />
     </Sample>
 
-    <Sample className={styles.sample} code="tata">
+    <Sample
+      className={styles.sample}
+      code="export default animate(
+        SpecifyClassName,
+        { watchedProps: ['ex'], className: 'custom' }
+      )"
+    >
       <SpecifyClassName />
     </Sample>
   </div>

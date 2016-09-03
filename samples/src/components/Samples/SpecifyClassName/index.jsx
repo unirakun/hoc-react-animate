@@ -20,5 +20,5 @@ SpecifyClassName.propTypes = {
 
 export default animate(
   SpecifyClassName,
-  { watchedProps: ['ex'], className: customStyles.customAnimate }
+  { watchedProps: ['ex'], className: 'custom' }
 )
