@@ -2,9 +2,12 @@ import React from 'react'
 
 import Samples from './Samples'
 import styles from './App.scss'
+import Icon from 'file?name=[name].[ext]!../favicon.gif'
 
 const App = () => (
   <div className={styles.app}>
+    <img className={styles.icon} src={Icon} role="presentation" />
+
     <h1>
       hoc-react-animate
     </h1>

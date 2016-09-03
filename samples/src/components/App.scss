@@ -3,6 +3,12 @@
   display: flex;
   flex-direction: column;
 
+  .icon {
+    left: 10px;
+    position: absolute;
+    top: 10px;
+  }
+
   .description {
     margin-bottom: 30px;
     width: 50%;
