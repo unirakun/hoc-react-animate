@@ -3,6 +3,8 @@ machine:
     - docker
 
 dependencies:
+  cache_directories:
+    - samples/node_modules
   override:
     - docker run --rm -v $(pwd):/usr/src/app zenika/alpine-node npm install
     - docker run --rm -v $(pwd)/samples:/usr/src/app zenika/alpine-node npm install
