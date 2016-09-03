@@ -12,7 +12,7 @@ const Samples = ({ style, className }) => (
   <div style={style} className={`${styles.samples} ${className}`}>
     <Sample
       className={styles.sample}
-      link="AtMount/index.jsx"
+      link="AtMount"
       code="export&nbsp;default animate(AtMount, { atMount: true })"
     >
       <AtMount />
@@ -20,7 +20,7 @@ const Samples = ({ style, className }) => (
 
     <Sample
       className={styles.sample}
-      link="AtMountTimeout/index.jsx"
+      link="AtMountTimeout"
       code="export&nbsp;default animate(AtMount, { atMount: true, timeout: 10 })"
     >
       <AtMountTimeout />
@@ -28,6 +28,7 @@ const Samples = ({ style, className }) => (
 
     <Sample
       className={styles.sample}
+      link="PropChange"
       code="export&nbsp;default animate(AtMount, { watchedProps: ['ex'] })"
     >
       <PropChange ex={2} />
@@ -35,6 +36,7 @@ const Samples = ({ style, className }) => (
 
     <Sample
       className={styles.sample}
+      link="SpecifyClassName"
       code="export&nbsp;default animate(
         SpecifyClassName,
         { watchedProps: ['ex'], className: 'custom' }
