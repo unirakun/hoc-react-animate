@@ -42,6 +42,29 @@ describe('react-animate', () => {
     })
   })
 
+  it('should not delete animate classname', done => {
+    const animated = getWrapped({ atMount: true, timeout: -1 }, { testProps: '1' })
+
+    setTimeout(() => {
+      equals(animated, {
+        className: 'animate',
+        testProps: '1',
+      })
+
+      setTimeout(() => {
+        equals(animated, {
+          className: 'animate',
+          testProps: '1',
+        })
+        done()
+      }, 1100)
+    }, 100)
+    equals(animated, {
+      className: 'animate',
+      testProps: '1',
+    })
+  })
+
   it('should animate at mount for 10ms with custom class', done => {
     const animated = getWrapped({ className: 'test', atMount: true, timeout: 10 })
 
