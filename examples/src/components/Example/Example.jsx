@@ -6,7 +6,7 @@ import Button from './Button'
 import styles from './Example.scss'
 
 const words = ['Banana', 'House', 'Train', 'Dog', 'Cat', 'River']
-const BASE_URL = 'https://github.com/Zenika/react-animate/blob/master/samples/src/components/Samples/'
+const BASE_URL = 'https://github.com/Zenika/react-animate/blob/master/examples/src/components/Examples/'
 
 class Example extends Component {
   constructor() {
@@ -30,7 +30,7 @@ class Example extends Component {
 
     return (
       <div style={style} className={`${styles.sample} ${className}`}>
-        {React.cloneElement(children, {ex: this.state.ex, className: styles.result})}
+        {React.cloneElement(children, { ex: this.state.ex, className: styles.result })}
         <a href={`${BASE_URL}${link}`}>
           <Code className={styles.code}>{code}</Code>
           <Ink />
@@ -46,6 +46,7 @@ Example.propTypes = {
   className: PropTypes.string,
   code: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
+  link: PropTypes.string.isRequired,
 }
 
 export default Example

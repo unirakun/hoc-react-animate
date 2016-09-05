@@ -5,11 +5,12 @@ import styles from '../animate.scss'
 
 const AtMount = ({ ex, className }) => (
   <div className={`${styles.component} ${className}`}>
-    {"I'm animated at mount."}
-    <br />
-    {"With custom timeout."}
-    <br />
-    <br />
+    <p>
+      {"I'm animated at mount."}
+      <br />
+      {"With custom timeout."}
+      <br />
+    </p>
     <pre>ex = {ex}</pre>
   </div>
 )

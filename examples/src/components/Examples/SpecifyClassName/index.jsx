@@ -6,11 +6,11 @@ import customStyles from './SpecifyClassName.scss'
 
 const SpecifyClassName = ({ ex, className }) => (
   <div className={`${styles.component} ${className}`}>
-    {"I'm animated when my "}<pre>ex</pre>{" prop is changed."}
-    <br />
-    {"My CSS animation class name is customized."}
-    <br />
-    <br />
+    <p>
+      {"I'm animated when my "}<pre>ex</pre>{" prop is changed."}
+      <br />
+      {"My CSS animation class name is customized."}
+    </p>
     <pre>ex = {ex}</pre>
   </div>
 )
