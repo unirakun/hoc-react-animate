@@ -1,26 +1,23 @@
 # hoc-react-animate
+
+## what is this?
+This is a higher order component ("HOC") that adds a CSS class to its child component whenever a prop change or at mount (or both) to animate it.
+
 ## try it
-You can try some samples [by clicking here](https://react-animate.firebaseapp.com/).
-
-## what
-This is a high order component (`HOC`).
-
-This HOC purpose is to add a CSS className whenever a props change or at mount (or both) to animate it.
+You can test some examples [here](https://react-animate.firebaseapp.com/).
 
 ## install
 `npm i --save hoc-react-animate`
 
 ## use
-You have to wrap your component, and give some informations :
+You have to wrap your component, and give some informations:
 
-Parameter | Needed | Default value | Description
+Parameter | Required | Default value | Description
 ----------|--------|---------------|-------------
-`watchedProps` | no | `[]` | The props to watch (they are compared with `lodash/isEqual`)
-`timeout` | no | `1000` | The time (in ms) the CSS class will be passed to the wrapped component
-`className` | no | `'animate'` | This is the className that is added whenever a props change (or at mount)
-`atMount` | no | `false` | Set to `true` if you wanna animate the component at mount
-
-The animation last 200ms, so the `loader`/`timeout` parameter is set to last 200ms as well.
+`watchedProps` | no | `[]` | The props to watch (they are compared with `lodash.isEqual`)
+`timeout` | no | `1000` | The time (in ms) for which the CSS class is applied to the wrapped component
+`className` | no | `'animate'` | The class to add when a prop changes (or at mount)
+`atMount` | no | `false` | Set to `true` if you want to animate the component at mount
 
 **Component.js**
 ```(javascript)
