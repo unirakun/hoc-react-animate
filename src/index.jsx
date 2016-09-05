@@ -35,10 +35,13 @@ export default (
           className: composedClassName,
         })
 
-        this.timer = setTimeout(
-          () => this.applyClassName(false, pick(this.props, watchedProps)),
-          timeout
-        )
+        // -1 timeout means we don't delete the animate classname
+        if (timeout !== -1) {
+          this.timer = setTimeout(
+            () => this.applyClassName(false, pick(this.props, watchedProps)),
+            timeout
+          )
+        }
       } else {
         this.setState({
           props,
