@@ -1,32 +1,30 @@
 # hoc-react-animate
-## what
-This is a high order component (`HOC`).
 
-This HOC purpose is to add a CSS className whenever a props change or at mount (or both).
+## what is this?
+This is a higher order component ("HOC") that adds a CSS class to its child component whenever a prop change or at mount (or both) to animate it.
+
+## try it
+You can test some examples [here](https://react-animate.firebaseapp.com/).
 
 ## install
 `npm i --save hoc-react-animate`
 
 ## use
-You have to wrap your component, and give some informations :
+You have to wrap your component, and give some informations:
 
-
-
-Parameter | Needed | Default value | Description
+Parameter | Required | Default value | Description
 ----------|--------|---------------|-------------
-`watchedProps` | no | `[]` | The props to watch (they are compared with `lodash/isEqual`)
-`timeout` | no | `1000` | The time (in ms) the CSS class will be passed to the wrapped component
-`className` | no | `'animate'` | This is the className that is added whenever a props change (or at mount)
-`atMount` | no | `false` | Set to `true` if you wanna animate the component at mount
-
-Example with `redux` where a text change every 3s.
-
-The animation last 1s, so the `loader`/`timeout` parameter is set to last 1s as well.
+`watchedProps` | no | `[]` | The props to watch (they are compared with `lodash.isEqual`)
+`timeout` | no | `1000` | The time (in ms) for which the CSS class is applied to the wrapped component
+`className` | no | `'animate'` | The class to add when a prop changes (or at mount)
+`atMount` | no | `false` | Set to `true` if you want to animate the component at mount
 
 **Component.js**
 ```(javascript)
-import React from 'react'
-export default ({ className, text }) => {
+import React, { PropTypes } from 'react'
+import animate from 'hoc-react-animate'
+
+const Component = ({ className, text }) => {
   return (
     <div
       className={`component ${className}`}
@@ -35,55 +33,25 @@ export default ({ className, text }) => {
     </div>
   )
 }
-```
 
-**Container.js**
-```(javascript)
-import { connect } from 'react-redux'
-import animate from 'hoc-react-animate'
-import { fetchText } from '%%your_actions%%'
-import Component from './Component'
-
-const mapStateToProps = ({ text }) => {
-  return {
-    text,
-  }
+Component.propTypes = {
+  className: PropTypes.string,
+  text: PropTypes.string,
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    load: (text) => dispatch(setText(text)),
-  }
-}
-
-const mergeProps = (stateProps, dispatchProps, ownProps) => {
-  setTimeout(
-    () => dispatchProps.load(`${stateProps.text}a`),
-    2000
-  )
-
-  return {
-    stateProps,
-    dispatchProps,
-    ownProps,
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(animate(
+export default animate(
   Component,
   {
     watchedProps: ['text'],
-    timeout: 1000,
+    timeout: 200,
   }
-))
+)
 ```
+
 **css**
 ```(css)
 .component {
-  transition: all 1s;
+  transition: all .2s;
 }
 .component.animate {
   transform: scale(2);

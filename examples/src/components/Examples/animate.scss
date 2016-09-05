@@ -1,0 +1,11 @@
+.component {
+  transition: all 1000ms;
+
+  &:global(.animate) {
+    transform: translateX(200px);
+  }
+
+  pre {
+    display: inline;
+  }
+}
