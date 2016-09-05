@@ -12,13 +12,13 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _pick = require('lodash/pick');
+var _lodash = require('lodash.pick');
 
-var _pick2 = _interopRequireDefault(_pick);
+var _lodash2 = _interopRequireDefault(_lodash);
 
-var _isEqual = require('lodash/isEqual');
+var _lodash3 = require('lodash.isEqual');
 
-var _isEqual2 = _interopRequireDefault(_isEqual);
+var _lodash4 = _interopRequireDefault(_lodash3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51,7 +51,7 @@ exports.default = function (ComposedComponent, config) {
     _inherits(_class, _Component);
 
     function _class() {
-      var _Object$getPrototypeO;
+      var _ref2;
 
       var _temp, _this, _ret;
 
@@ -61,7 +61,7 @@ exports.default = function (ComposedComponent, config) {
         args[_key] = arguments[_key];
       }
 
-      return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(_class)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+      return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = _class.__proto__ || Object.getPrototypeOf(_class)).call.apply(_ref2, [this].concat(args))), _this), _this.state = {
         props: {}
       }, _this.applyClassName = function (shouldAnimate, props) {
         if (shouldAnimate) {
@@ -73,9 +73,12 @@ exports.default = function (ComposedComponent, config) {
             className: composedClassName
           });
 
-          _this.timer = setTimeout(function () {
-            return _this.applyClassName(false, (0, _pick2.default)(_this.props, watchedProps));
-          }, timeout);
+          // -1 timeout means we don't delete the animate classname
+          if (timeout !== -1) {
+            _this.timer = setTimeout(function () {
+              return _this.applyClassName(false, (0, _lodash2.default)(_this.props, watchedProps));
+            }, timeout);
+          }
         } else {
           _this.setState({
             props: props,
@@ -88,13 +91,13 @@ exports.default = function (ComposedComponent, config) {
     _createClass(_class, [{
       key: 'componentWillMount',
       value: function componentWillMount() {
-        this.applyClassName(atMount, (0, _pick2.default)(this.props, watchedProps));
+        this.applyClassName(atMount, (0, _lodash2.default)(this.props, watchedProps));
       }
     }, {
       key: 'componentWillReceiveProps',
       value: function componentWillReceiveProps(nextProps) {
-        var pickedProps = (0, _pick2.default)(nextProps, watchedProps);
-        this.applyClassName(!(0, _isEqual2.default)(pickedProps, this.state.props), pickedProps);
+        var pickedProps = (0, _lodash2.default)(nextProps, watchedProps);
+        this.applyClassName(!(0, _lodash4.default)(pickedProps, this.state.props), pickedProps);
       }
     }, {
       key: 'componentWillUnmount',

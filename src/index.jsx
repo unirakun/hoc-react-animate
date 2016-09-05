@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
-import pick from 'lodash/pick'
-import isEqual from 'lodash/isEqual'
+import pick from 'lodash.pick'
+import isEqual from 'lodash.isEqual'
 
 const getDisplayName = (c) => c.displayName || c.name || 'Component'
 

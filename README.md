@@ -14,7 +14,7 @@ You have to wrap your component, and give some informations :
 
 Parameter | Needed | Default value | Description
 ----------|--------|---------------|-------------
-`watchedProps` | no | `[]` | The props to watch (they are compared with `lodash/isEqual`)
+`watchedProps` | no | `[]` | The props to watch (they are compared with [`lodash.isEqual`](https://lodash.com/docs/4.15.0#isEqual))
 `timeout` | no | `1000` | The time (in ms) the CSS class will be passed to the wrapped component
 `className` | no | `'animate'` | This is the className that is added whenever a props change (or at mount)
 `atMount` | no | `false` | Set to `true` if you wanna animate the component at mount
