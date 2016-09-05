@@ -32,7 +32,7 @@ function getPlugins(plugins) {
 module.exports = {
   devtool: dev ? 'eval' : '',
   entry: {
-    samples: getEntrySources([
+    examples: getEntrySources([
       './src',
     ]),
   },

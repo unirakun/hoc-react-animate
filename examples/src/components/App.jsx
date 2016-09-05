@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Samples from './Samples'
+import Examples from './Examples'
 import styles from './App.scss'
 import Icon from 'file?name=[name].[ext]!../favicon.gif'
 
@@ -34,11 +34,11 @@ const App = () => (
 
     <div className={styles.description}>
       You can play with some examples just below.<br />
-      Click on sample button to see what happens !<br />
+      Click on example button to see what happens !<br />
       You can also click on the sample code line to see the full component.<br />
     </div>
 
-    <Samples className={styles.app} />
+    <Examples className={styles.app} />
   </div>
 )
 

@@ -1,41 +1,41 @@
 import React, { PropTypes } from 'react'
 
-import Sample from 'Sample'
+import Example from 'Example'
 import AtMount from './AtMount'
 import AtMountTimeout from './AtMountTimeout'
 import PropChange from './PropChange'
 import SpecifyClassName from './SpecifyClassName'
 
-import styles from './Samples.scss'
+import styles from './Examples.scss'
 
-const Samples = ({ style, className }) => (
-  <div style={style} className={`${styles.samples} ${className}`}>
-    <Sample
-      className={styles.sample}
+const Examples = ({ style, className }) => (
+  <div style={style} className={`${styles.examples} ${className}`}>
+    <Example
+      className={styles.example}
       link="AtMount"
       code="export&nbsp;default animate(AtMount, { atMount: true })"
     >
       <AtMount />
-    </Sample>
+    </Example>
 
-    <Sample
-      className={styles.sample}
+    <Example
+      className={styles.example}
       link="AtMountTimeout"
       code="export&nbsp;default animate(AtMount, { atMount: true, timeout: 10 })"
     >
       <AtMountTimeout />
-    </Sample>
+    </Example>
 
-    <Sample
-      className={styles.sample}
+    <Example
+      className={styles.example}
       link="PropChange"
       code="export&nbsp;default animate(AtMount, { watchedProps: ['ex'] })"
     >
       <PropChange ex={2} />
-    </Sample>
+    </Example>
 
-    <Sample
-      className={styles.sample}
+    <Example
+      className={styles.example}
       link="SpecifyClassName"
       code="export&nbsp;default animate(
         SpecifyClassName,
@@ -43,13 +43,13 @@ const Samples = ({ style, className }) => (
       )"
     >
       <SpecifyClassName />
-    </Sample>
+    </Example>
   </div>
 )
 
-Samples.propTypes = {
+Examples.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string,
 }
 
-export default Samples
+export default Examples

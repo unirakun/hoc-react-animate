@@ -3,12 +3,12 @@ import Ink from 'react-ink'
 
 import Code from 'Code'
 import Button from './Button'
-import styles from './Sample.scss'
+import styles from './Example.scss'
 
 const words = ['Banana', 'House', 'Train', 'Dog', 'Cat', 'River']
 const BASE_URL = 'https://github.com/Zenika/react-animate/blob/master/samples/src/components/Samples/'
 
-class Sample extends Component {
+class Example extends Component {
   constructor() {
     super()
 
@@ -41,11 +41,11 @@ class Sample extends Component {
   }
 }
 
-Sample.propTypes = {
+Example.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string,
   code: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
 }
 
-export default Sample
+export default Example
