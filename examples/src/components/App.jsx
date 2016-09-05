@@ -26,17 +26,14 @@ const App = () => (
       </a>
     </div>
 
-    <div className={styles.description}>
-      hoc-react-animate is an high order component used to animate React component.<br />
-      As a high order component, this is usefull because it let your graphical components dumbs.<br />
-      It means you can keep your graphical components as pure functions.<br />
-    </div>
+    <p className={styles.description}>
+      hoc-react-animate is an higher order component to animate React component. It lets you write animated components 
+      as pure functions.
+    </p>
 
-    <div className={styles.description}>
-      You can play with some examples just below.<br />
-      Click on example button to see what happens !<br />
-      You can also click on the sample code line to see the full component.<br />
-    </div>
+    <p className={styles.description}>
+      Check out the examples below. Use the button to trigger animations or click the code to read the full source.
+    </p>
 
     <Examples className={styles.app} />
   </div>
