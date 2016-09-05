@@ -2,6 +2,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  font-family: 'Roboto', sans-serif;
 
   .icon {
     left: 10px;
@@ -19,6 +20,10 @@
     position: absolute;
     right: 10px;
     top: 10px;
+  }
+
+  h1 {
+    font-family: 'Roboto Condensed', sans-serif;
   }
 }
 
