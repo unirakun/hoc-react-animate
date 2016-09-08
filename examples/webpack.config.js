@@ -58,6 +58,9 @@ module.exports = {
         'css?modules&localIdentName=[path]_[local]__[hash:base64:5]',
         'sass',
       ],
-    }],
+    }, {
+      test: /\.(png|svg|gif|jpg)$/,
+      loader: 'file?name=./src/[name].[ext]',
+    },],
   },
 }
