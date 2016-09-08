@@ -39,7 +39,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'public'),
     filename: '[name].js',
-    publicPath: '/',
+    publicPath: './',
   },
   resolve: {
     root: [path.resolve('./src'), path.resolve('./src/components')],
@@ -60,7 +60,7 @@ module.exports = {
       ],
     }, {
       test: /\.(png|svg|gif|jpg)$/,
-      loader: 'file?name=./src/[name].[ext]',
+      loader: 'file?name=[name].[ext]',
     },],
   },
 }
