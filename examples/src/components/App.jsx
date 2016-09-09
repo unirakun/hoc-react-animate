@@ -2,7 +2,7 @@ import React from 'react'
 
 import Examples from './Examples'
 import styles from './App.scss'
-import Icon from 'file?name=[name].[ext]!../favicon.gif'
+import Icon from 'favicon.gif'
 
 const App = () => (
   <div className={styles.app}>

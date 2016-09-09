@@ -39,7 +39,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'public'),
     filename: '[name].js',
-    publicPath: '/',
+    publicPath: './',
   },
   resolve: {
     root: [path.resolve('./src'), path.resolve('./src/components')],
@@ -58,6 +58,9 @@ module.exports = {
         'css?modules&localIdentName=[path]_[local]__[hash:base64:5]',
         'sass',
       ],
-    }],
+    }, {
+      test: /\.(png|svg|gif|jpg)$/,
+      loader: 'file?name=[name].[ext]',
+    },],
   },
 }
