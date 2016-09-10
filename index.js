@@ -51,7 +51,7 @@ exports.default = function (ComposedComponent, config) {
     _inherits(_class, _Component);
 
     function _class() {
-      var _Object$getPrototypeO;
+      var _ref2;
 
       var _temp, _this, _ret;
 
@@ -61,7 +61,7 @@ exports.default = function (ComposedComponent, config) {
         args[_key] = arguments[_key];
       }
 
-      return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(_class)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this), _this.state = {
+      return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = _class.__proto__ || Object.getPrototypeOf(_class)).call.apply(_ref2, [this].concat(args))), _this), _this.state = {
         props: {}
       }, _this.applyClassName = function (shouldAnimate, props) {
         if (shouldAnimate) {
@@ -73,9 +73,12 @@ exports.default = function (ComposedComponent, config) {
             className: composedClassName
           });
 
-          _this.timer = setTimeout(function () {
-            return _this.applyClassName(false, (0, _pick2.default)(_this.props, watchedProps));
-          }, timeout);
+          // -1 timeout means we don't delete the animate classname
+          if (timeout !== -1) {
+            _this.timer = setTimeout(function () {
+              return _this.applyClassName(false, (0, _pick2.default)(_this.props, watchedProps));
+            }, timeout);
+          }
         } else {
           _this.setState({
             props: props,
