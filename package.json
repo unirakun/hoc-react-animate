@@ -40,17 +40,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ZenNante5/react-animate.git"
+    "url": "git+https://github.com/Zenika/react-animate.git"
   },
   "keywords": [
     "react",
     "animate",
     "hoc"
   ],
-  "author": "Fabien JUIF",
+  "author": "Fabien JUIF <fabien.juif@zenika.com>",
+  "contributors": [
+    "Laurent MAILLET <laurent.maillet@zenika.com>"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ZenNante5/react-animate/issues"
+    "url": "https://github.com/Zenika/react-animate/issues"
   },
-  "homepage": "https://github.com/ZenNante5/react-animate#readme"
+  "homepage": "https://github.com/Zenika/react-animate#readme"
 }
